@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <string name="app_name">Camera Flash</string>
+    <string name="flash_off">Flash Off</string>
+    <string name="flash_on">Flash On</string>
+    <string name="flash_torch">Flashlight</string>
+    <string name="takepicture">Take Picture</string>
+    <style name="AppTheme" parent="@style/android:Theme.Holo.Light">
+    </style>
+</resources>

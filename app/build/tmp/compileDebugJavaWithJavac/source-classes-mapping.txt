@@ -1,0 +1,17 @@
+vuzix/com/sample/camera_flash/RotationListener.java
+ vuzix.com.sample.camera_flash.RotationListener
+ vuzix.com.sample.camera_flash.RotationListener$1
+ vuzix.com.sample.camera_flash.RotationListener$rotationCallbackFn
+vuzix/com/sample/camera_flash/BuildConfig.java
+ vuzix.com.sample.camera_flash.BuildConfig
+vuzix/com/sample/camera_flash/MainActivity.java
+ vuzix.com.sample.camera_flash.MainActivity
+ vuzix.com.sample.camera_flash.MainActivity$1
+ vuzix.com.sample.camera_flash.MainActivity$2
+ vuzix.com.sample.camera_flash.MainActivity$3
+ vuzix.com.sample.camera_flash.MainActivity$4
+ vuzix.com.sample.camera_flash.MainActivity$5
+ vuzix.com.sample.camera_flash.MainActivity$6
+ vuzix.com.sample.camera_flash.MainActivity$7
+ vuzix.com.sample.camera_flash.MainActivity$8
+ vuzix.com.sample.camera_flash.MainActivity$8$1

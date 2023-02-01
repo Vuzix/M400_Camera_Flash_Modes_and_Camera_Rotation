@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="vuzix.com.sample.MainActivity">
+    <item
+        android:id="@+id/flashoff"
+        android:title="@string/flash_off"/>
+    <item
+        android:id="@+id/flashon"
+        android:title="@string/flash_on"/>
+    <item
+        android:id="@+id/flashtorch"
+        android:title="@string/flash_torch"/>
+</menu>
