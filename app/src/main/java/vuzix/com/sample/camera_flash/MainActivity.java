@@ -74,7 +74,7 @@ import java.util.List;
 
 /**
  * Sample activity to demonstrate modifying the camera flash settings for applications that want to
- * direclty capture photographs with the flash
+ * directly capture photographs with the flash
  */
 public class MainActivity extends Activity implements RotationListener.rotationCallbackFn {
     private static final String TAG = "CameraFlash_App";
@@ -113,7 +113,7 @@ public class MainActivity extends Activity implements RotationListener.rotationC
                                                 /* ROTATION_270 = 3; */ 270 };
 
     /**
-     * Setup the view including camera preview, implements UI codde for
+     * Setup the view including camera preview, implements UI code for
      * @param savedInstanceState - just for the superclass. We ignore this
      */
     @Override

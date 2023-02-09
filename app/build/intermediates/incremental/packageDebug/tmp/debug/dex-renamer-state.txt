@@ -1,7 +1,0 @@
-#Fri Feb 25 15:59:48 EST 2022
-base.1=C\:\\Users\\brody_wood\\Documents\\Corrected Sample Apps\\M400\\camera_flash-sample_9_21\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
-path.1=10/classes.dex
-base.0=C\:\\Users\\brody_wood\\Documents\\Corrected Sample Apps\\M400\\camera_flash-sample_9_21\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-renamed.1=classes2.dex
-renamed.0=classes.dex
-path.0=0/classes.dex

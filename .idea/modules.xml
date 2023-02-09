@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Camera_Flash_Modes_and_Camera_Rotation.iml" filepath="$PROJECT_DIR$/.idea/modules/Camera_Flash_Modes_and_Camera_Rotation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Camera_Flash_Modes_and_Camera_Rotation.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Camera_Flash_Modes_and_Camera_Rotation.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/M400_Camera_Flash_Modes_and_Camera_Rotation.iml" filepath="$PROJECT_DIR$/.idea/modules/M400_Camera_Flash_Modes_and_Camera_Rotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/M400_Camera_Flash_Modes_and_Camera_Rotation.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/M400_Camera_Flash_Modes_and_Camera_Rotation.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/M400_Camera_Flash_Modes_and_Camera_Rotation.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/M400_Camera_Flash_Modes_and_Camera_Rotation.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/M400_Camera_Flash_Modes_and_Camera_Rotation.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/M400_Camera_Flash_Modes_and_Camera_Rotation.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/M400_Camera_Flash_Modes_and_Camera_Rotation.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/M400_Camera_Flash_Modes_and_Camera_Rotation.app.unitTest.iml" />
     </modules>
   </component>
 </project>
