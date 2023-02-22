@@ -39,6 +39,7 @@ import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CameraMetadata;
@@ -258,27 +259,22 @@ public class MainActivity extends Activity implements RotationListener.rotationC
      * @return
      */
     public String getOutputImagePath(int width, int height){
-        File mediaStorageDir = new File(
-                Environment.getExternalStorageDirectory(), "sample_image");
-
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory(), "Pictures");
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
-                Log.e(TAG, "can not create the directory");
+                Log.e(TAG, "can not create the directory " + mediaStorageDir.getPath());
             }
         }
-
         String timeStamp = String.valueOf(System.currentTimeMillis());
-        String outputPath = (mediaStorageDir.getPath() + File.separator + "IMAGE" +timeStamp+"_"+width +"x"+height + ".jpg").toString();
-
-        return outputPath;
+        return (mediaStorageDir.getPath() + File.separator + "IMAGE_" + timeStamp + "_" + width + "x" + height + ".jpg");
     }
 
 
     /**
-     * Utility to get the image rotation in degrees
+     * Utility to get the screen rotation in degrees
      * @return int angle. For an Activity properly in sensorLandscape, this is either 0 or 180.
      */
-    private int getImageRotationDegrees() {
+    private int getScreenRotationDegrees() {
         // Get one of the 4 integer indexes of a system rotation
         final int systemRotation = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
         // Convert to corresponding degrees
@@ -286,15 +282,26 @@ public class MainActivity extends Activity implements RotationListener.rotationC
     }
 
     /**
-     * Utility to invert the degrees by 180
-     * @param degrees int degree value to invert, from 0-359
-     * @return int degree value from 0-359 inverted from input by 180 degrees
+     * Utility to determine the correct image rotation
+     * @return int degree value from 0-359 to rotate the captured image to the right to view it normally
      */
-    private int invertDegrees(int degrees) {
-        degrees += 180;
-        if (degrees >= 360) {
-            degrees -= 360;
+    private int rotateImageForOrientation() {
+        int sensorOrientation = 0;
+        boolean isFrontFacing = false;
+        try {
+            CameraCharacteristics cameraCharacteristics = mCameraManager.getCameraCharacteristics(mCameraId);
+            sensorOrientation = cameraCharacteristics.get(CameraCharacteristics.SENSOR_ORIENTATION);
+            isFrontFacing = (cameraCharacteristics.get(CameraCharacteristics.LENS_FACING) == CameraCharacteristics.LENS_FACING_FRONT);
+        } catch (CameraAccessException e) {
+            Log.d(TAG, "Did not get orientation. ", e);
+            return 0;
         }
+        int degrees = getScreenRotationDegrees();
+        if(isFrontFacing) {
+            degrees = -degrees;
+        }
+        degrees = (sensorOrientation - degrees + 360) % 360;
+        Log.d(TAG, "Sensor front facing: " + isFrontFacing + " orientation: " + sensorOrientation + " jpeg orientation: " + degrees);
         return degrees;
     }
 
@@ -396,7 +403,9 @@ public class MainActivity extends Activity implements RotationListener.rotationC
         }
         try {
             setPreviewFlashMode();
-            mTextureView.setRotation(getImageRotationDegrees());
+            int rotation = -getScreenRotationDegrees();
+            mTextureView.setRotation(rotation);
+            Log.d(TAG, "Screen rotated. Setting preview rotation to: " + rotation);
             mCameraPreviewSessions.setRepeatingRequest(mCaptureRequestBuilder.build(), null, mBackgroundCaptureHandler);
         } catch (CameraAccessException e) {
             e.printStackTrace();
@@ -411,7 +420,8 @@ public class MainActivity extends Activity implements RotationListener.rotationC
     private void capture(){
         try {
             setCaptureFlashMode();
-            int degrees = invertDegrees ( getImageRotationDegrees() );  // The M400 sensor is inverted by reference to the encoding. This straightens it.
+            // Properly account for the sensor rotation
+            int degrees = rotateImageForOrientation();
             mCaptureRequestBuilder.set(CaptureRequest.JPEG_ORIENTATION, degrees);
             mCameraCaptureSessions.capture(mCaptureRequestBuilder.build(), null, mBackgroundCaptureHandler);
         } catch (CameraAccessException e) {
@@ -461,6 +471,7 @@ public class MainActivity extends Activity implements RotationListener.rotationC
                         if (image != null) {
                             image.close();
                         }
+                        Log.d(TAG, "Wrote: " + file.getPath());
                         completed();  // Send ourselves a message that we're completed
                     }
                 }
@@ -692,5 +703,4 @@ public class MainActivity extends Activity implements RotationListener.rotationC
         inflater.inflate(R.menu.menu_main, menu);
         return true;
     }
-
 }
